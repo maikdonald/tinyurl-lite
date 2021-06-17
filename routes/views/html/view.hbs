@@ -1,0 +1,96 @@
+
+<!-- I downloaded this template downloaded from bootstrap examples -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cover Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/main.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Tiny-url Lite</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" target="_blank" href="https://es.wikipedia.org/wiki/Barcelona">Made in Barcelona</a>
+            
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">It's time to shorten your URL !</h1>
+        <p class="lead">Try this amazing tool to start shorten your URLs as a KING</p>
+        <p class="lead">
+          <form action="{{end_point}}" method="post">
+            <div class="form-group">
+              <input type="text" class="form-control" id="input-url-box" aria-describedby="inputHelp" placeholder="Write or paste your URL" name="original_url" {{#if latest_shortened}}value="{{latest_shortened.decodedOriginalUrl}}"{{/if}}>
+              <small id="inputHelp" class="form-text">Type here the URL you want to make short</small>
+            </div>
+            <div class="form-group">
+              <input type="text" disabled class="form-control" id="output-url-box" aria-describedby="outputHelp" placeholder="Your shortened url is..." {{#if latest_shortened}}value="{{latest_shortened.fullUrl}}"{{/if}}>
+              
+              {{#if latest_shortened}}
+                <a class="btn btn-success" role="button" href="{{latest_shortened.relUrl}}" target="_blank" style="float: right; margin-top: -2.35rem;">GO!</a>
+              {{/if}}
+              
+              <small id="outputHelp" class="form-text">When you submit the form you will find your shortened URL here</small>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Shorten URL!</button>
+          </form>
+        </p>
+
+        {{#if shortened_urls_vals}}
+          
+            <div style="background-color: #2d2d2d;opacity: 1;color: white;padding: 1rem;margin: 2rem; border: 1px solid;">
+              <h5>Previous shortened URLS</h5>
+              {{#each shortened_urls_vals}}
+                <div class="d-flex" style="justify-content: space-between;">
+                  {{#each this}}
+                    {{#if_eq @index 2}}
+                      <div>
+                        <a href="/api/delete/{{this}}" role="button" class="btn btn-outline-danger">X</a>
+                      </div>
+                    {{else}}
+                      {{#if_eq @index 1}}
+                        <div>
+                          <a href="/navigate/{{this}}" role="button" target="_blank" class="btn btn-outline-success">Go!</a>
+                        </div>
+                      {{else}}
+                        <div style="padding: 0.5rem;">Created at {{this}}</div>
+                      {{/if_eq}}
+                    {{/if_eq}}
+                  {{/each}}
+                </div>
+              {{/each}}
+            </div>
+          
+        {{/if}}
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Life is short!</p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+  </body>
+</html>

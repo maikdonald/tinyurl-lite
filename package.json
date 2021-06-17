@@ -1,0 +1,26 @@
+{
+  "name": "tinyurl-lite",
+  "version": "1.0.0",
+  "description": "Life is short",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "debug": "node --inspect index.js"
+  },
+  "repository": {},
+  "keywords": [],
+  "engines": {
+    "node": "14.17.0"
+  },
+  "author": "Cesc Zafra <cesczafrac@gmail.com>",
+  "dependencies": {
+    "atob": "^2.1.2",
+    "btoa": "^1.2.1",
+    "express": "^4.17.1",
+    "hbs": "^4.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.0"
+  },
+  "license": "MIT"
+}
